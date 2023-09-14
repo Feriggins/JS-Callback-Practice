@@ -42,7 +42,7 @@ function moveWithArrowKeys(left, bottom, callback){//function creation that has 
     let x = left;
     let y = bottom; 
 }
-setInterval(function(){ //SetInterval is a built-in function that will run code every number of defined seconds
+function moveCharacter(){ //SetInterval is a built-in function that will run code every number of defined seconds
     if(direction === 'west'){
         x = x - 1//x = x - 1 means to take the current value of x and subtract it by 1 and store the result in the variable of x
     }
@@ -58,7 +58,8 @@ setInterval(function(){ //SetInterval is a built-in function that will run code 
     }
     character.style.left = x + 'px'
     character.style.bottom = y + 'px'
-}, 1)
+}
+setInterval(moveCharacter, 1)
 
 document.addEventListener('keydown', function(e){//An event listener is a function that is called for a set event
     if(e.repeat) return;
@@ -80,6 +81,7 @@ document.addEventListener('keydown', function(e){//An event listener is a functi
 })
 
 document.addEventListener('keyup', function(e){//The "keyup" is the event that the listener is waiting to happen before it runs the code inside
+    console.log("e",e)
     direction = null
     //callback()
     handleDirectionChange(direction)
